@@ -1,10 +1,14 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
+//import com.toeditor.calendar.JDataChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,10 +45,20 @@ public class signup extends JFrame{
         dob.setBounds(300,230,170,100);
         dob.setFont(new Font(getName(),ABORT,15));
         add(dob);
+        //JDateChooser datech=new JDateChooser();
         JLabel gender=new JLabel("Gender:");
         gender.setBounds(300,270,170,100);
         gender.setFont(new Font(getName(),ABORT,15));
         add(gender);
+        JRadioButton male=new JRadioButton("MALE");
+        male.setBounds(450, 310, 100, 30);
+        add(male);
+        JRadioButton female=new JRadioButton("FEMALE");
+        female.setBounds(600, 310, 100, 30);
+        add(female);
+        ButtonGroup gendergrp=new ButtonGroup();
+        gendergrp.add(male);
+        gendergrp.add(female);
         JLabel emailnm=new JLabel("Email Address:");
         emailnm.setBounds(300,310,170,100);
         emailnm.setFont(new Font(getName(),ABORT,15));
@@ -56,6 +70,15 @@ public class signup extends JFrame{
         mrs.setBounds(300,350,170,100);
         mrs.setFont(new Font(getName(),ABORT,15));
         add(mrs);
+        JRadioButton single=new JRadioButton("SINGLE");
+        single.setBounds(450, 390, 100, 30);
+        add(single);
+        JRadioButton married=new JRadioButton("Married");
+        married.setBounds(600,390 , 100, 30);
+        add(married);
+        ButtonGroup mar=new ButtonGroup();
+        mar.add(single);
+        mar.add(married);
         JLabel addr=new JLabel("Address:");
         addr.setBounds(300,390,170,100);
         addr.setFont(new Font(getName(),ABORT,15));
