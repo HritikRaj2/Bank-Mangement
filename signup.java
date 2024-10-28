@@ -15,7 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.*;
-public class signup extends JFrame{
+public class signup extends JFrame implements ActionListener{
+    JTextField usernamebox,fnametxt,emailtxt,addtxt,citytxt,statxt,pinctxt;
+    JRadioButton married,single,male,female;
+    JButton bnext;
     signup(){
         setTitle("Signup");
         setLayout(null);
@@ -31,14 +34,14 @@ public class signup extends JFrame{
         usernm.setBounds(300,150,170,100);
         usernm.setFont(new Font(getName(),ABORT,15));
         add(usernm);
-        JTextField usernamebox =new JTextField("Username");
+        usernamebox =new JTextField("Username");
         usernamebox.setBounds(450,190,300,30);
         add(usernamebox);
         JLabel fname=new JLabel("Father's Name:");
         fname.setBounds(300, 190, 170, 100);
         fname.setFont(new Font(getName(),ABORT,15));
         add(fname);
-        JTextField fnametxt=new JTextField();
+        fnametxt=new JTextField();
         fnametxt.setBounds(450,230,300,30);
         add(fnametxt); 
         JLabel dob=new JLabel("Date Of Birth:");
@@ -50,10 +53,10 @@ public class signup extends JFrame{
         gender.setBounds(300,270,170,100);
         gender.setFont(new Font(getName(),ABORT,15));
         add(gender);
-        JRadioButton male=new JRadioButton("MALE");
+        male=new JRadioButton("MALE");
         male.setBounds(450, 310, 100, 30);
         add(male);
-        JRadioButton female=new JRadioButton("FEMALE");
+        female=new JRadioButton("FEMALE");
         female.setBounds(600, 310, 100, 30);
         add(female);
         ButtonGroup gendergrp=new ButtonGroup();
@@ -63,17 +66,17 @@ public class signup extends JFrame{
         emailnm.setBounds(300,310,170,100);
         emailnm.setFont(new Font(getName(),ABORT,15));
         add(emailnm);
-        JTextField emailtxt=new JTextField();
+        emailtxt=new JTextField();
         emailtxt.setBounds(450,350,300,30);
         add(emailtxt);
         JLabel mrs=new JLabel("Marital Status:");
         mrs.setBounds(300,350,170,100);
         mrs.setFont(new Font(getName(),ABORT,15));
         add(mrs);
-        JRadioButton single=new JRadioButton("SINGLE");
+        single=new JRadioButton("SINGLE");
         single.setBounds(450, 390, 100, 30);
         add(single);
-        JRadioButton married=new JRadioButton("Married");
+        married=new JRadioButton("Married");
         married.setBounds(600,390 , 100, 30);
         add(married);
         ButtonGroup mar=new ButtonGroup();
@@ -83,36 +86,67 @@ public class signup extends JFrame{
         addr.setBounds(300,390,170,100);
         addr.setFont(new Font(getName(),ABORT,15));
         add(addr);
-        JTextField addtxt=new JTextField();
+        addtxt=new JTextField();
         addtxt.setBounds(450, 430, 300, 30);
         add(addtxt);
         JLabel city=new JLabel("City:");
         city.setBounds(300,430,170,100);
         city.setFont(new Font(getName(),ABORT,15));
         add(city);
-        JTextField citytxt=new JTextField();
+        citytxt=new JTextField();
         citytxt.setBounds(450,470,300,30);
         add(citytxt);
         JLabel sta=new JLabel("State:");
         sta.setBounds(300,470,170,100);
         sta.setFont(new Font(getName(),ABORT,15));
         add(sta);
-        JTextField statxt=new JTextField();
+        statxt=new JTextField();
         statxt.setBounds(450, 510, 300, 30);
         add(statxt);
         JLabel pinc=new JLabel("Pin:");
         pinc.setBounds(300,510,170,100);
         pinc.setFont(new Font(getName(),ABORT,15));
         add(pinc);
-        JTextField pinctxt=new JTextField();
+        pinctxt=new JTextField();
         pinctxt.setBounds(450, 550, 300, 30);
         add(pinctxt);
-        JButton bnext=new JButton("Next");
+        bnext=new JButton("Next");
         bnext.setBounds(500, 650, 150, 25);
         add(bnext);
         setSize(850,800);
         setLocation(350,10);
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent ae){
+        String fathername=fnametxt.getText();
+        String name=usernamebox.getText();
+        String email=emailtxt.getText();
+        String address=addtxt.getText();
+        String city=citytxt.getText();
+        String pin=pinctxt.getText();
+        String gender=null;
+        if(male.isSelected()){
+            gender="Male";
+        }
+        else if(female.isSelected()){
+            gender="Female";
+        }
+        String marital=null;
+        if(single.isSelected()){
+            marital="Single";
+        }
+        else if(married.isSelected()){
+            marital="Married";
+        }
+        bnext.addActionListener(this);
+        try{
+            if (name.equals("")){
+                //JOptionPane.showMessageDialog(null,"Name is Required");
+            }
+            
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
     public static void main(String args[]){
         new signup();
