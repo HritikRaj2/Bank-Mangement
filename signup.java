@@ -1,20 +1,14 @@
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
-//import com.toeditor.calendar.JDataChooser;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import java.awt.*;
 public class signup extends JFrame implements ActionListener{
     JTextField usernamebox,fnametxt,emailtxt,addtxt,citytxt,statxt,pinctxt;
     JRadioButton married,single,male,female;
@@ -112,6 +106,7 @@ public class signup extends JFrame implements ActionListener{
         add(pinctxt);
         bnext=new JButton("Next");
         bnext.setBounds(500, 650, 150, 25);
+        bnext.addActionListener(this);
         add(bnext);
         setSize(850,800);
         setLocation(350,10);
@@ -141,7 +136,11 @@ public class signup extends JFrame implements ActionListener{
         bnext.addActionListener(this);
         try{
             if (name.equals("")){
-                //JOptionPane.showMessageDialog(null,"Name is Required");
+                JOptionPane.showMessageDialog(null,"Name is Required");
+            }else{
+                conn c=new conn();
+                String query="insert into signup values('"+usernamebox+"','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+pinctxt+"','"+statxt+"')";
+                c.s.executeUpdate(query);
             }
             
         } catch(Exception e){
