@@ -1,7 +1,33 @@
 {
-    "java.project.sourcePaths": ["src"],
+    "java.project.sourcePaths": [
+        "src",
+        "lib"
+    ],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib\\mysql-connector-java-8.0.28.jar",
+            "c:\\Program Files (x86)\\MySQL\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar"
+        ],
+        "exclude": [
+            "lib/mysql-connector-java-8.0.28.jar"
+        ]
+    },
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "MySQL Local",
+            "database": "bankmanagementsystem",
+            "username": "root",
+            "password": "raj@9676",
+            "connectionTimeout": 30
+        }
     ]
 }

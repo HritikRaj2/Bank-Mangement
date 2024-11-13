@@ -134,13 +134,14 @@ public class signup extends JFrame implements ActionListener{
             marital="Married";
         }
         bnext.addActionListener(this);
+        
         try{
             if (name.equals("")){
                 JOptionPane.showMessageDialog(null,"Name is Required");
             }else{
                 conn c=new conn();
                 //String query="insert into signup values('"+usernamebox+"','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+pinctxt+"','"+statxt+"')";
-                String query="insert into signup values('"+usernamebox+"'','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+citytxt+"','"+statxt+"','"+pinctxt+"','"+married+"','"+single+"','"+male+"','"+female+"')";
+                String query="insert into login values('"+usernamebox+"'','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+citytxt+"','"+statxt+"','"+pinctxt+"','"+married+"','"+single+"','"+male+"','"+female+"')";
                 c.s.executeUpdate(query);
             }
             
