@@ -61,7 +61,7 @@ public class Login extends JFrame implements ActionListener{
             
         }
         else if( ae.getSource()==Signup){
-
+            new signup();
         }
         else if(ae.getSource()==forget){
 
