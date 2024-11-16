@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -15,7 +16,9 @@ public class signuptwo extends JFrame implements ActionListener{
     JTextField panno,aadharno;
     JRadioButton Yes,no;
     JButton next;
-    signuptwo(){
+    String randomstr;
+    signuptwo(String randomstr){
+        this.randomstr=randomstr;
         setTitle("Addition Details");
         setLayout(null);
         JLabel text1=new JLabel("Page 2 : Additional details");
@@ -143,10 +146,52 @@ public class signuptwo extends JFrame implements ActionListener{
         else if(no.isSelected()){
             ssenior="No";
         }
+        try{
+            if(sreligion.equals(" ")){
+                JOptionPane.showMessageDialog(null,"Please Fill Religion");
+            }
+            else if (scategory.equals(" ")){
+                JOptionPane.showMessageDialog(null,"Please Select Catagory");
+            }
+            else if(sincome.equals(" ")){
+                JOptionPane.showMessageDialog(null,"Please fill Income");
+            }
+            else if (seducation.equals(" ")){
+                JOptionPane.showMessageDialog(null,"Fill Qualification");
+            }
+            else if(soccupation.equals("")){
+                JOptionPane.showMessageDialog(null,"Fill the Occupation");
+            }
+            else if(spanno.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter the PAN No");
+            }
+            else if(saadharno.equals("")){
+                JOptionPane.showMessageDialog(null, "Fill AAdhar No");
+            }
+            else if(ssenior.equals(" ")){
+                JOptionPane.showMessageDialog(null, "Select yes or no in Senior Citizen");
+            }
+            else {
+                conn c=new conn();
+                String query="INSERT INTO signuptwo(appno,Religion,Catagory, Income, Qualification, Occupation, PanNo, AadharNo, SeniorCitizen) VALUES ('"
+                        + randomStr +"','"
+                        + sreligion + "', '"
+                        + scategory + "', '"
+                        + sincome + "', '"
+                        + seducation + "', '"
+                        + soccupation + "', '"
+                        + spanno + "', '"
+                        + saadharno + "', '"
+                        + ssenior + "')";
+                c.s.executeUpdate(query);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
         next.addActionListener(this);
     }
-    
+
     public static void main(String args[]){
-        new signuptwo();
+        new signuptwo(" ");
     }
 }

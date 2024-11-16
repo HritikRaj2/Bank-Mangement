@@ -1,6 +1,7 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ public class signup extends JFrame implements ActionListener {
     JTextField usernamebox, fnametxt, emailtxt, addtxt, citytxt, statxt, pinctxt;
     JRadioButton married, single, male, female;
     JButton bnext;
+    Long random;
 
     signup() {
         setTitle("Signup");
@@ -22,8 +24,11 @@ public class signup extends JFrame implements ActionListener {
         logintext.setBounds(350, 45, 170, 100);
         logintext.setFont(new Font(getName(), ABORT, 50));
         add(logintext);
-        JLabel appli = new JLabel("Application Form");
-        appli.setBounds(350, 95, 250, 100);
+        Random ran=new Random();
+        random=Math.abs((ran.nextLong()%9000L)+1000L);
+
+        JLabel appli = new JLabel("Application Form no:"+ random);
+        appli.setBounds(350, 95, 300, 100);
         appli.setFont(new Font(getName(), ABORT, 25));
         add(appli);
         JLabel usernm = new JLabel("NAME:");
@@ -122,6 +127,7 @@ public class signup extends JFrame implements ActionListener {
         String address = addtxt.getText();
         String city = citytxt.getText();
         String pin = pinctxt.getText();
+        String randomStr = String.valueOf(random);
         String gender = null;
         if (male.isSelected()) {
             gender = "Male";
@@ -142,7 +148,8 @@ public class signup extends JFrame implements ActionListener {
                 conn c = new conn();
                 // String query="insert into signup
                 // values('"+usernamebox+"','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+pinctxt+"','"+statxt+"')";
-                String query = "INSERT INTO login (usernamebox, fnametxt, emailtxt, addtxt, citytxt, statxt, pinctxt, married, single) VALUES ('"
+                String query = "INSERT INTO login (appno,usernamebox, fnametxt, emailtxt, addtxt, citytxt, statxt, pinctxt, married, single) VALUES ('"
+                        + randomStr +"','"
                         + name + "', '"
                         + fathername + "', '"
                         + email + "', '"
@@ -153,6 +160,8 @@ public class signup extends JFrame implements ActionListener {
                         + marital + "', '"
                         + gender + "')";
                 c.s.executeUpdate(query);
+                setVisible(false);
+                new signuptwo(randomStr).setVisible(true);
             }
 
         } catch (Exception e) {
