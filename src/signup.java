@@ -127,7 +127,7 @@ public class signup extends JFrame implements ActionListener {
         String address = addtxt.getText();
         String city = citytxt.getText();
         String pin = pinctxt.getText();
-        String randomStr = String.valueOf(random);
+        String formno = String.valueOf(random);
         String gender = null;
         if (male.isSelected()) {
             gender = "Male";
@@ -149,7 +149,7 @@ public class signup extends JFrame implements ActionListener {
                 // String query="insert into signup
                 // values('"+usernamebox+"','"+fnametxt+"','"+emailtxt+"','"+addtxt+"','"+pinctxt+"','"+statxt+"')";
                 String query = "INSERT INTO login (appno,usernamebox, fnametxt, emailtxt, addtxt, citytxt, statxt, pinctxt, married, single) VALUES ('"
-                        + randomStr +"','"
+                        + formno +"','"
                         + name + "', '"
                         + fathername + "', '"
                         + email + "', '"
@@ -161,7 +161,7 @@ public class signup extends JFrame implements ActionListener {
                         + gender + "')";
                 c.s.executeUpdate(query);
                 setVisible(false);
-                new signuptwo(randomStr).setVisible(true);
+                new signuptwo(formno).setVisible(true);
             }
 
         } catch (Exception e) {

@@ -16,10 +16,10 @@ public class signuptwo extends JFrame implements ActionListener {
     JTextField panno, aadharno;
     JRadioButton Yes, no;
     JButton next;
-    String randomstr;
+    String formno;
 
-    signuptwo(String randomstr) {
-        this.randomstr = randomstr;
+    signuptwo(String formno) {
+        this.formno = formno;
         setTitle("Additional Details");
         setLayout(null);
 
@@ -165,9 +165,11 @@ public class signuptwo extends JFrame implements ActionListener {
             } else {
                 conn c = new conn();
                 String query = "INSERT INTO signuptwo(appno, Religion, Catagory, Income, Qualifiaction, Occupation, PanNo, AadharNo, SeniorCitizen) VALUES ('"
-                        + randomstr + "', '" + sreligion + "', '" + scategory + "', '" + sincome + "', '" + seducation + "', '" + soccupation + "', '"
+                        + formno + "', '" + sreligion + "', '" + scategory + "', '" + sincome + "', '" + seducation + "', '" + soccupation + "', '"
                         + spanno + "', '" + saadharno + "', '" + ssenior + "')";
                 c.s.executeUpdate(query);
+                setVisible(false);
+                new signupthree(formno).setVisible(true);
             }
         } catch (Exception e) {
             System.out.println(e);
