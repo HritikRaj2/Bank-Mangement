@@ -3,11 +3,13 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 public class Login extends JFrame implements ActionListener{
     JButton login,Signup,forget;
@@ -58,7 +60,22 @@ public class Login extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource()==login){
-            
+            try{
+                conn C=new conn();
+                String cardno=cardnotext.getText();
+                String pin=pintext.getText();
+                String query="Select *from loginmain where cardno='"+cardno+"' and pin='"+pin+"'";
+                ResultSet rs=C.s.executeQuery(query);
+                if (rs.next()){
+                    setVisible(false);
+                    new transactions(pin).setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, " Incorrect Card Number");
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         else if( ae.getSource()==Signup){
             new signup();

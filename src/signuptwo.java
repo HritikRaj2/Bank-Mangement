@@ -169,7 +169,7 @@ public class signuptwo extends JFrame implements ActionListener {
                         + spanno + "', '" + saadharno + "', '" + ssenior + "')";
                 c.s.executeUpdate(query);
                 setVisible(false);
-                new signupthree(formno).setVisible(true);
+                new Signup3(formno).setVisible(true);
             }
         } catch (Exception e) {
             System.out.println(e);
