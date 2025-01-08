@@ -10,7 +10,7 @@ public class conn {
     public conn() {
         try {
             
-            c = DriverManager.getConnection("jdbc:mysql:///bankmanagementsystem", "root", "raj@9676");
+            c = DriverManager.getConnection("jdbc:mysql:///bankmanagementsystem", "root", "yourpassword");
             s = c.createStatement();
         } catch (SQLException e) {
             System.out.println(e);
